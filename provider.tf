@@ -14,12 +14,14 @@ terraform {
     aws = {
       version = "~> 3.0"
     }
+  }
 
-    #    default_tags {
-    #      tags = {
-    #        managedby = "terraform"
-    #        owner     = "PhunkyTech Team"
-    #      }
-    #    }
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "phunkytech-mtc-terransible"
+
+    workspaces {
+      name = "eks-terraform"
+    }
   }
 }
